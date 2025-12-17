@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sejarah Graf - Website Graph & MultiGraph</title>
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- Link ke file CSS terpisah -->
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS untuk memastikan gambar di samping kanan dan pas -->
+    <style>
+        /* Import Google Fonts untuk font yang lebih menarik dan mudah dibaca */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        /* Reset dan Base Styles - Pastikan konsistensi dan keterbacaan */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Font modern dan mudah dibaca */
+            line-height: 1.6; /* Line-height optimal untuk readability */
+            color: #333; /* Warna teks hitam untuk kontras tinggi */
+            background-color: #ffffff; /* Background putih bersih */
+            font-size: 16px; /* Ukuran base yang nyaman */
+        }
+
+        /* Navbar Styles - Full-Width dengan Gradient Biru, Efek Hover, dan Interaktivitas */
+        /* Tambahkan !important untuk override bg-dark dari Bootstrap */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3a7bd5 100%) !important; /* Gradien biru menarik dengan !important */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #007bff;
+            transition: all 0.3s ease;
+        }
+
+        .full-width-navbar {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #ffd700 !important;
+            transform: scale(1.05) rotate(1deg); /* Efek scale dan rotate untuk interaktivitas */
+        }
+
+        .navbar-nav {
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #e0e0e0 !important;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+            border-color: #ffd700;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px) scale(1.05); /* Efek lift dan scale */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-toggler {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar-toggler:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffd700;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Collapse Menu Animasi - Interaktif dengan slide-in */
+        .collapse {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        /* Responsivitas Navbar */
+        @media (max-width: 991px) {
+            .navbar-nav {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .nav-link {
+                margin: 5px 0;
+                padding: 10px 20px;
+            }
+        }
+
+        /* Main Content Layout - Pastikan gambar di samping kanan */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col-lg-8 {
+            flex: 0 0 66.666667%; /* Lebar 8/12 */
+            max-width: 66.666667%;
+        }
+
+        .col-lg-4 {
+            flex: 0 0 33.333333%; /* Lebar 4/12 */
+            max-width: 33.333333%;
+            position: sticky; /* Agar sidebar tetap di tempat saat scroll */
+            top: 20px;
+            height: fit-content;
+        }
+
+        /* Responsivitas untuk layout gambar */
+        @media (max-width: 991px) {
+            .col-lg-8, .col-lg-4 {
+                flex: 0 0 100%; /* Full width di mobile */
+                max-width: 100%;
+            }
+            .col-lg-4 {
+                order: -1; /* Gambar di atas di mobile jika diinginkan, atau hapus jika ingin di bawah */
+            }
+        }
+
+        /* Style untuk gambar agar pas di kolom kanan */
+        .col-lg-4 img {
+            max-width: 100%; /* Pastikan gambar tidak melebihi lebar kolom */
+            height: auto; /* Jaga aspek rasio */
+            max-height: 200px; /* Batasi tinggi maksimal agar pas dan tidak terlalu besar */
+            object-fit: cover; /* Potong gambar jika perlu agar pas */
+            border-radius: 10px; /* Sesuai dengan rounded */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambah shadow ringan */
+            transition: transform 0.3s ease; /* Efek hover */
+        }
+
+        .col-lg-4 img:hover {
+            transform: scale(1.05); /* Efek zoom saat hover */
+        }
+
+        /* Card Styles - Hover dengan Lift, Glow, dan Interaktivitas */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 10px;
+            background: #f8f9fa; /* Background abu-abu terang untuk kontras */
+            margin-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-7px) scale(1.0); /* Efek lift dan scale */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card-img-top {
+            border-radius: 10px 10px 0 0;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1); /* Zoom gambar saat hover */
+        }
+
+        /* Button Styles - Konsisten dengan Border, Hover, dan Interaktivitas */
+        .btn {
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            border: 2px solid;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            border-color: #007bff;
+            background: #007bff;
+        }
+
+        .btn-primary:hover {
+            border-color: #0056b3;
+            background: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-outline-primary {
+            border-color: #007bff;
+            color: #007bff;
+            background: transparent;
+        }
+
+        .btn-outline-primary:hover {
+            border-color: #007bff;
+            background: #007bff;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        /* Animasi tambahan yang mungkin diperlukan */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        strong{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm full-width-navbar sticky-top">
+        <div class="container-fluid"> <!-- Ubah ke container-fluid untuk full-width -->
+            <span class="navbar-brand">MultiGrafGO</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> <!-- Tambah justify-content-end untuk susun ke kanan -->
+                <ul class="navbar-nav">
+                    <a class="nav-link active" href="/index.html">Beranda</a>
+                    <a class="nav-link" href="kalkulator.html">Kalkulator</a>
+                    <a class="nav-link" href="kontak.html">Kontak</a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container my-5">
+        
+        <div class="row">
+            <!-- Konten Utama -->
+            <div class="col-lg-8">
+                <section class="mb-5">
+                    <strong>Apa Itu Teori Graf?</strong>
+                    <p>Teori graf adalah cabang matematika yang mempelajari struktur yang terdiri dari titik-titik (simpul) dan garis yang menghubungkannya (sisi). Teori ini digunakan untuk memodelkan berbagai masalah di dunia nyata, seperti jaringan transportasi, hubungan sosial, dan algoritma komputer.</p>
+                </section>
+                <br>
+
+                <section class="mb-5">
+                    <strong>Awal Mula: Masalah Jembatan Königsberg</strong>
+                    <p>Teori graf dimulai pada tahun 1736 oleh matematikawan Swiss, Leonhard Euler. Ia menyelesaikan masalah "Jembatan Königsberg", yang bertanya apakah mungkin untuk berjalan melintasi semua jembatan di kota Königsberg (sekarang Kaliningrad, Rusia) tanpa melintasi jembatan yang sama dua kali.</p>
+                    <p>Euler menyederhanakan masalah ini menjadi model graf: pulau-pulau sebagai simpul dan jembatan sebagai sisi. Ia menemukan bahwa solusinya tergantung pada derajat simpul (jumlah sisi yang terhubung). Ini adalah awal dari teori graf modern.</p>
+                </section>
+                <br>
+
+                <section class="mb-5">
+                    <strong>Perkembangan di Abad ke-19</strong>
+                    <ul>
+                        <li><b>Arthur Cayley (1857):</b> Matematikawan Inggris ini menerapkan teori graf pada kimia organik, khususnya untuk menghitung isomer alkana. Ia memperkenalkan istilah "graf" dalam konteks ini.</li>
+                        <li><b>Gustav Kirchhoff (1847):</b> Fisikawan Jerman yang menggunakan graf untuk menganalisis rangkaian listrik, menciptakan hukum Kirchhoff yang masih digunakan hingga sekarang.</li>
+                        <li><b>James Joseph Sylvester (1878):</b> Ia memperkenalkan istilah "graf" secara formal dalam matematika.</li>
+                    </ul>
+                </section>
+                <br>
+
+                <section class="mb-5">
+                    <strong>Abad ke-20: Pengembangan Modern</strong>
+                    <p>Teori graf berkembang pesat di abad ke-20 dengan kontribusi dari berbagai ahli:</p>
+                    <ul>
+                        <li><b>Dénes König (1936):</b> Buku "Theorie der endlichen und unendlichen Graphen" yang menjadi dasar teori graf.</li>
+                        <li><b>Paul Erdős dan Alfred Rényi (1959):</b> Mereka mengembangkan model graf acak, yang penting dalam probabilitas dan jaringan kompleks.</li>
+                        <li><b>John Hopcroft dan Robert Tarjan (1970-an):</b> Algoritma efisien untuk pencarian dalam graf, seperti DFS dan BFS, yang menjadi fondasi algoritma komputer.</li>
+                    </ul>
+                    <p>Teori graf sekarang digunakan dalam bidang seperti informatika (algoritma pencarian), biologi (jaringan gen), dan sosial (analisis jejaring sosial).</p>
+                </section>
+                <br>
+
+                <section class="mb-5">
+                    <strong>Aplikasi dan Dampak</strong>
+                    <p>Teori graf tidak hanya teori matematika murni, tetapi juga memiliki aplikasi praktis:</p>
+                    <ul>
+                        <li>Jaringan komputer dan internet.</li>
+                        <li>Optimasi rute transportasi (misalnya, GPS).</li>
+                        <li>Analisis data besar dan kecerdasan buatan.</li>
+                        <li>Permodelan epidemiologi (seperti penyebaran virus).</li>
+                    </ul>
+                </section>
+                <br>
+
+                <footer class="text-center mt-5">
+                    <p> <i> <b>Jika Anda ingin mempelajari lebih lanjut, kunjungi kalkulator graf kami atau hubungi kami untuk pertanyaan.</b> </i> </p>
+                </footer>
+            </div>
+
+            <!-- Kolom Kanan untuk Gambar -->
+            <div class="col-lg-4">
+                <aside>
+                    <h4 class="mb-3">Gambar Terkait:</h4>
+                    <div class="mb-3">
+                        <img src="/assets/img/sejarah2.png" alt="Peta Jembatan Königsberg" class="img-fluid rounded shadow mb-2">
+                        <p class="small text-muted">Peta Jembatan Königsberg oleh Leonhard Euler.</p>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <img src="/assets/img/LeonhardEuler.png" alt="Leonhard Euler" class="img-fluid rounded shadow mb-2">
+                        <p class="small text-muted">Leonhard Euler, pelopor teori graf.</p>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <img src="/assets/img/graph1.png" alt="Contoh Graf" class="img-fluid rounded shadow mb-2">
+                        <p class="small text-muted">Contoh sederhana dari sebuah graf.</p>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <img src="/assets/img/topologi.png" alt="Jaringan Graf" class="img-fluid rounded shadow mb-2">
+                        <p class="small text-muted">Representasi jaringan sebagai graf.</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="/assets/styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

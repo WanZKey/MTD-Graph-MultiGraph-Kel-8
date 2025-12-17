@@ -1,0 +1,419 @@
+/* Import Google Fonts untuk font yang lebih menarik dan mudah dibaca */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Reset dan Base Styles - Pastikan konsistensi dan keterbacaan */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Font modern dan mudah dibaca */
+    line-height: 1.6; /* Line-height optimal untuk readability */
+    color: #333; /* Warna teks hitam untuk kontras tinggi */
+    background-color: #ffffff; /* Background putih bersih */
+    font-size: 16px; /* Ukuran base yang nyaman */
+}
+
+/* Custom styles untuk tombol Watch Video - Interaktif dengan efek pulse dan hover */
+.btn-watch-video {
+    background: linear-gradient(135deg, #ff6b6b, #feca57); /* Gradien cerah untuk daya tarik */
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease; /* Transisi halus untuk interaktivitas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    cursor: pointer;
+    animation: pulse 2s infinite; /* Efek pulse untuk menarik perhatian */
+}
+
+.btn-watch-video:hover {
+    background: linear-gradient(135deg, #feca57, #ff6b6b);
+    transform: translateY(-2px) scale(1.05); /* Efek lift dan scale */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.btn-watch-video i {
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+.btn-watch-video button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn-watch-video button span {
+    font-size: 1.1rem;
+}
+
+/* Keyframe untuk animasi pulse - Menambah daya tarik visual */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Responsivitas untuk tombol Watch Video */
+@media (max-width: 768px) {
+    .btn-watch-video {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    .btn-watch-video i {
+        font-size: 1.3rem;
+    }
+    .btn-watch-video button span {
+        font-size: 1rem;
+    }
+}
+
+/* Navbar Styles - Full-Width dengan Gradient Biru, Efek Hover, dan Interaktivitas */
+/* Tambahkan !important untuk override bg-dark dari Bootstrap */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3a7bd5 100%) !important; /* Gradien biru menarik dengan !important */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid #007bff;
+    transition: all 0.3s ease;
+}
+
+.full-width-navbar {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #ffd700 !important;
+    transform: scale(1.05) rotate(1deg); /* Efek scale dan rotate untuk interaktivitas */
+}
+
+.navbar-nav {
+    flex-direction: row;
+    gap: 30px;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #e0e0e0 !important;
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+    border-color: #ffd700;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px) scale(1.05); /* Efek lift dan scale */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffd700;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Collapse Menu Animasi - Interaktif dengan slide-in */
+.collapse {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Responsivitas Navbar */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .nav-link {
+        margin: 5px 0;
+        padding: 10px 20px;
+    }
+}
+
+/* Hero Section - Background dengan Overlay, Animasi, dan Efek Interaktif */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/home.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out; /* Animasi masuk untuk keterbacaan bertahap */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.hero:hover::before {
+    opacity: 1; /* Efek overlay saat hover */
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    font-weight: bold;
+    animation: fadeInUp 1s ease-out;
+    margin-bottom: 20px; /* Spacing untuk readability */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    animation: fadeInUp 1.2s ease-out;
+    line-height: 1.8; /* Tingkatkan line-height untuk teks panjang */
+}
+
+/* Tombol di Hero - Super Menarik dengan Glow, Bounce, Pulse, dan Efek Shine */
+.hero .btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #d63031 100%);
+    border: 3px solid #ff4757;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding: 15px 40px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(255, 71, 87, 0.6), 0 0 20px rgba(255, 71, 87, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    animation: bounce 2s infinite, pulse 3s infinite;
+    margin-top: 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+.hero .btn::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24, #d63031, #b71540);
+    border-radius: 50px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hero .btn:hover {
+    background: linear-gradient(135deg, #ee5a24 0%, #d63031 50%, #b71540 100%);
+    border-color: #ff3838;
+    box-shadow: 0 15px 40px rgba(255, 71, 87, 0.8), 0 0 30px rgba(255, 71, 87, 0.6), 0 0 50px rgba(255, 71, 87, 0.5);
+    transform: translateY(-5px) scale(1.1) rotate(1deg);
+    color: #fff;
+    animation-play-state: paused;
+}
+
+.hero .btn:hover::before {
+    left: 100%; /* Efek shine */
+}
+
+.hero .btn:hover::after {
+    opacity: 1;
+}
+
+.hero .btn:active {
+    transform: translateY(-2px) scale(1.05) rotate(0deg);
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.7);
+}
+
+/* Content Section - Animasi Fade-In untuk Keterbacaan Bertahap */
+section.py-5 {
+    background-color: #fff;
+    animation: fadeIn 1s ease-out;
+    padding: 60px 0; /* Padding lebih untuk readability */
+}
+
+section h2 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2rem; /* Ukuran besar untuk judul */
+}
+
+section h3 {
+    font-size: 1.5rem; /* Judul sub-section jelas */
+    margin-bottom: 20px;
+}
+
+/* Card Styles - Hover dengan Lift, Glow, dan Interaktivitas */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    background: #f8f9fa; /* Background abu-abu terang untuk kontras */
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-7px) scale(1.0); /* Efek lift dan scale */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.card-img-top {
+    border-radius: 10px 10px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1); /* Zoom gambar saat hover */
+}
+
+/* Penjelasan Gambar - Sekarang Langsung Muncul di Samping Gambar (Sejajar) */
+.position-relative {
+    display: flex;
+    align-items: flex-start; /* Align top untuk readability */
+    gap: 20px;
+    flex-wrap: wrap; /* Wrap di mobile */
+}
+
+.card-img-top {
+    width: 40%;
+    height:max-content;
+    object-fit: cover;
+}
+
+.img-explanation {
+    width: 50%; /* Lebih lebar untuk teks */
+    position: static;
+    opacity: 1;
+    background: none;
+    color: #000000; /* Teks hitam untuk readability */
+    padding: 10px;
+    border-radius: 0;
+    font-size: 0.95rem; /* Ukuran nyaman */
+    font-weight: 400;
+    text-align: left;
+    line-height: 1.7; /* Line-height tinggi untuk teks panjang */
+    animation: fadeIn 1.5s ease-out; /* Animasi masuk untuk keterbacaan */
+}
+
+/* Button Styles - Konsisten dengan Border, Hover, dan Interaktivitas */
+.btn {
+    transition: all 0.3s ease;
+    border-radius: 25px;
+    border: 2px solid;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    border-color: #007bff;
+    background: #007bff;
+}
+
+.btn-primary:hover {
+    border-color: #0056b3;
+    background: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+.btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    border-color: #007bff;
+    background: #007bff;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+/* Style khusus untuk tombol "Selengkapnya" - Mirip Hero tapi lebih subtle */
+.btn-selengkapnya {
+    margin-top: 5px;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 50%, #004085 100%);
+    border: 2px solid #007bff;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-selengkapnya::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-selengkapnya:hover {
+    background: linear-gradient(135deg, #007bff)
+}
+    

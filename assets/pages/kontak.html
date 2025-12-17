@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - MultiGrafGO</title>
+
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="../styles/bootstrap-5.3.8-dist/css/bootstrap-grid.min.css">
+    <!-- Link ke file CSS terpisah -->
+    <link rel="stylesheet" href="../styles/style.css">
+    <!-- Bootstrap Icons untuk ikon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm full-width-navbar sticky-top">
+        <div class="container-fluid">
+            <span class="navbar-brand">MultiGrafGO</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <a class="nav-link active" href="/index.html">Beranda</a>
+                    <a class="nav-link" href="/assets/pages/kalkulator.html">Kalkulator</a>
+                    <a class="nav-link" href="/assets/pages/kontak.html">Kontak</a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1>Hubungi Kami</h1>
+            <p>Jangan ragu untuk bertanya tentang Graf & MultiGraph. Kami di sini untuk membantu Anda!</p>
+            <br>
+            <a href="#kontak-info" class="btn btn-primary btn-lg mt-3">Lihat Kontak <i class="bi bi-arrow-down-circle"></i></a>
+        </div>
+    </section>
+
+    <!-- CONTENT SECTION -->
+    <div id="kontak-info"></div>
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Informasi Kontak Kelompok 8</h2>
+
+            <div class="row g-4">
+                <!-- Alamat -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-geo-alt-fill text-primary" style="font-size: 3rem;"></i>
+                            <h3 class="card-title mt-3">Alamat</h3>
+                            <p class="card-text">
+                                Universitas Teknologi Indonesia<br>
+                                Jl. Raya Jakarta No. 123<br>
+                                Bandung, Jawa Barat 40287<br>
+                                Indonesia
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-envelope-fill text-primary" style="font-size: 3rem;"></i>
+                            <h3 class="card-title mt-3">Email</h3>
+                            <p class="card-text">
+                                info@multigrafgo.com<br>
+                                support@multigrafgo.com<br>
+                                <small>Kami akan merespons dalam 24 jam</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Telepon -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-telephone-fill text-primary" style="font-size: 3rem;"></i>
+                            <h3 class="card-title mt-3">Telepon & WhatsApp</h3>
+                            <p class="card-text">
+                                Telepon: +62 21 1234 5678<br>
+                                WhatsApp: +62 812 3456 7890<br>
+                                <small>Hubungi kami kapan saja</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Kontak -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title text-center mb-4">Kirim Pesan Kepada Kami</h3>
+                            <form id="contact-form">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nama" class="form-label">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap Anda" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Masukkan email aktif Anda" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subjek" class="form-label">Subjek</label>
+                                    <input type="text" class="form-control" id="subjek" placeholder="Subjek pesan Anda" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pesan" class="form-label">Pesan</label>
+                                    <textarea class="form-control" id="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">Kirim Pesan <i class="bi bi-send"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Peta Lokasi (Opsional, menggunakan iframe Google Maps) -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title text-center mb-4">Lokasi Kami</h3>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.902!2d107.618!3d-6.917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398255a2d%3A0x146a1c39!2sUniversitas%20Teknologi%20Indonesia!5e0!3m2!1sen!2sid!4v1690000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-light text-center py-3">
+        <p class="mb-0">&copy; 2025 MultiGrafGO - Kelompok 8. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="bootstrap.bundle.min.js"></script>
+    <!-- Script sederhana untuk validasi form -->
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah dikirim. Kami akan menghubungi Anda segera.');
+            // Di sini bisa ditambahkan kode untuk mengirim data ke server
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/styles/bootstrap-5.3.8-dist/css/bootstrap-grid.min.css">
+    <!-- Link ke file CSS terpisah -->
+    <link rel="stylesheet" href="/assets/styles/style.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm full-width-navbar sticky-top">
+        <div class="container-fluid"> <!-- Ubah ke container-fluid untuk full-width -->
+            <span class="navbar-brand">MultiGrafGO</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> <!-- Tambah justify-content-end untuk susun ke kanan -->
+                <ul class="navbar-nav">
+                    <a class="nav-link active" href="/index.html">Beranda</a>
+                    <a class="nav-link" href="/assets/pages/kalkulator.html">Kalkulator</a>
+                    <a class="nav-link" href="/assets/pages/kontak.html">Kontak</a>
+                </ul>
+            </div>
+        </div>
+    </nav>  
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="container">
+                <h1>Selamat Datang di Website Graph & MultiGraph</h1>
+                <p>Kelompok 8 </p> <br>
+                <a href="#mulai" class="btn btn-primary btn-lg mt-3"> Mulai Eksplorasi <i class="fas fa-rocket"></i></a>
+            </div>
+        </section>
+
+        <!-- CONTENT SECTION -->
+        <div id="mulai"></div>
+    <section class="py-5">
+        <div class="container">
+            
+            <a href="https://youtu.be/u5OtLdzx2o4?si=FLkjQ1bVvgV1sPW0" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><button><span>Watch Video</span></button></a>
+            <h2 class="text-center mb-4">Graf & MultiGraph</h2>
+
+            <div class="row g-4">
+                <h3 >Sejarah graf</h3>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="position-relative">
+                            <img src="/assets/img/sejarah.png" class="card-img-top" alt="">
+                            <span class="img-explanation"> 
+                                Leonhard Euler (1707–1783), seorang matematikawan asal Swiss, dianggap sebagai "bapak graf teori" karena memecahkan masalah terkenal yang dikenal dengan nama Masalah Jembatan Königsberg. <br>
+                                Kota Königsberg (sekarang Kaliningrad, Rusia) memiliki tujuh jembatan yang menghubungkan bagian-bagian kota di sepanjang sungai Pregel. Masalahnya adalah: "Apakah mungkin berjalan di sepanjang setiap jembatan tepat sekali tanpa mengulang, dan kembali ke titik awal?"<br><br>
+                                Euler menunjukkan bahwa masalah ini tidak mungkin diselesaikan, dan untuk membuktikannya, ia mengembangkan konsep graf pertama dalam bentuk graf Eulerian, di mana titik-titik (vertex) mewakili bagian kota, dan sisi-sisi (edge) mewakili jembatan. Ia merumuskan bahwa suatu lintasan melalui graf hanya mungkin ada jika setiap titik (vertex) memiliki derajat genap (kecuali mungkin dua titik).
+                                Ini adalah titik awal lahirnya graf teori sebagai cabang matematika.
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <a href="/assets/pages/sejarah.html" class="btn-selengkapnya">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="col-md-4">
+                    <h3>Graf sederhana</h3>
+                    <div class="card shadow-sm">
+                        <div class="position-relative">
+                            <img src="/assets/img/graphSederhana.png" class="card-img-top" alt="">
+                            <span class="img-explanation">
+                                Graf sederhana (simple graph) adalah struktur matematika yang terdiri dari simpul (vertex) dan sisi (edge) yang menghubungkan pasangan simpul.
+                                Graf ini tidak memiliki loop (sisi yang kembali ke simpul itu sendiri) dan tidak memiliki sisi ganda (dua sisi yang sama antara dua simpul).
+                                <br>
+                                <strong>Vertex (Simpul / Node) :</strong> <br>
+                                Merupakan titik yang menjadi “objek”. <br>
+                                Contoh: kota, orang, komputer, dll. <br>
+                                Simbol: V <br>
+                                Contoh: <br>
+                                V = {A, B, C, D} <br>
+                                <strong>Edge (Sisi) :</strong>
+                                Merupakan garis yang menghubungkan dua simpul. <br>
+                                Simbol: E <br>
+                                Contoh: <br>
+                                E = { (A, B), (B, C) }
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <a href="/assets/pages/graf-sederhana.html" class="btn-selengkapnya">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="col-md-4">
+                    <h3>MultiGraph</h3>
+                    <div class="card shadow-sm">
+                        <div class="position-relative">
+                            <img src="/assets//img/multigraphSederhana.png" class="card-img-top" alt="">
+                            <span class="img-explanation">
+                                Multigraf adalah jenis graf dalam teori graf yang mengizinkan adanya lebih dari satu sisi (edge) yang menghubungkan pasangan simpul (vertex) yang sama. <br>                        
+                                Dengan kata lain, antara dua simpul bisa terdapat dua, tiga, atau lebih sisi paralel. Multigraf juga boleh memiliki loop, yaitu sisi yang berawal dan berakhir pada simpul yang sama (tergantung definisi yang digunakan, tetapi umumnya diizinkan). <br>
+                                <strong>Contoh Multigraf </strong> <br>
+                                Bayangkan ada dua kota A dan B. Di antara kedua kota tersebut terdapat tiga jalan berbeda. <br>
+                                Dalam teori graf: <br>
+                                A dan B adalah simpul <br>
+                                Tiga jalan tersebut adalah tiga sisi paralel <br>
+                                Ini adalah contoh multigraf karena ada lebih dari satu sisi antara dua simpul.
+                            </span>
+                        </div>
+                        <br>
+                        <div class="card-body">
+                            <a href="/assets/pages/multigraf.html" class="btn-selengkapnya">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+            </div>
+        </div>
+    </section>
+
+        <!-- Bootstrap JS -->
+        <script src="/assets/styles/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
